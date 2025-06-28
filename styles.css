@@ -4,6 +4,9 @@ body {
   font-family: "Segoe UI", Arial, sans-serif;
   margin: 0;
   padding: 0;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><filter id="glow"><feGaussianBlur stdDeviation="2.5" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><text y="24" font-size="24" filter="url(%23glow)" fill="%23a64ca6" stroke="white" stroke-width="2">❤</text></svg>')
+      16 16,
+    auto;
 }
 
 header {
@@ -110,6 +113,46 @@ footer {
   font-size: 1.2rem;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
+}
+
+.rain-heart {
+  position: fixed;
+  top: -40px;
+  font-size: 2rem;
+  color: #e75480;
+  z-index: 999;
+  pointer-events: none;
+  animation: caerCorazon linear forwards;
+  filter: drop-shadow(0 2px 8px #e1cfff);
+  user-select: none;
+}
+
+@keyframes caerCorazon {
+  to {
+    top: 110vh;
+    transform: translateY(0.5rem) scale(1.2) rotate(20deg);
+    opacity: 0.7;
+  }
+}
+
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff6fb 60%, #e75480 100%);
+  box-shadow: 0 0 8px #e1cfff, 0 0 2px #e75480;
+  opacity: 0.8;
+  animation: sparkle-fade 0.7s linear forwards;
+}
+
+@keyframes sparkle-fade {
+  to {
+    opacity: 0;
+    transform: scale(1.7);
+  }
 }
 
 @media (max-width: 600px) {

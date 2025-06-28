@@ -44,27 +44,25 @@ function createHeart() {
 }
 setInterval(createHeart, 800);
 
+// Animación de lluvia de corazones
+function lluviaCorazones() {
+  const heart = document.createElement("div");
+  heart.className = "rain-heart";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = 2 + Math.random() * 2 + "s";
+  heart.innerHTML = "❤";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 4000);
+}
+setInterval(lluviaCorazones, 350);
+
 const mensajes = [
-  "Eres la razón de mi sonrisa cada día. ¡Feliz cumpleaños, amor! 💖",
-  "Gracias por existir y por todos los momentos hermosos juntos. 💜",
-  "Cada foto es un recuerdo de lo mucho que te amo. ¡Feliz 22! 🥰",
-  "Eres mi persona favorita en el mundo. ¡Te amo infinitamente! 💗",
-  "Contigo, cada día es especial. ¡Feliz cumpleaños, mi vida! 🎂",
-  "Eres mi sueño hecho realidad. ¡Feliz 22 años, princesa! 👑",
-  "Gracias por ser mi compañera, mi amiga y mi amor. 💞",
-  "No hay nada más bonito que verte sonreír. ¡Feliz cumpleaños! 😊",
-  "Por muchos años más juntos, mi amor. ¡Te adoro! 💕",
-  "Eres mi inspiración y mi alegría. ¡Feliz cumpleaños! 🌸",
-  "Siempre serás mi gran amor. ¡Feliz 22! 💍",
-  "Cada momento contigo es un tesoro. ¡Te amo! 💝",
-  "Eres la mejor parte de mi vida. ¡Feliz cumpleaños! 🌷",
-  "Gracias por tu amor y tu dulzura. ¡Feliz día, mi reina! 👸",
-  "Hoy celebramos tu vida y nuestro amor. ¡Feliz cumpleaños! 🎉",
-  "Eres mi todo. ¡Feliz 22 años, amorcito! 💓",
-  "Que todos tus sueños se hagan realidad. ¡Te amo! ✨",
-  "Siempre juntos, siempre felices. ¡Feliz cumpleaños! 🫶",
-  "Eres mi sol y mi luna. ¡Feliz cumpleaños, mi amor! 🌙☀️",
-  "Por siempre a tu lado. ¡Feliz 22! 💞",
+  "Amorcito, te amo mucho, demasiado, infinito. Siempre estaremos juntitos hasta viejitos. Recuerda que a pesar del tiempo siempre te voy a amar.",
+  "Nunca me aburriré de ti, eres lo más hermoso que tengo en la vida. Jamás me cansaré de ti, eres lo más bonito que me dio la vida.",
+  "Siempre, pero siempre, tengo que agradecer a Dios por conocerte y por ser lo más hermoso que me tocó en la vida.",
+  "Sabes que a pesar de mis disgustos, nunca me cansaré de ti, amor. Siempre estaré contigo en las buenas, en las malas y en las peores.",
+  "Te amo tanto, amor, que me imagino toda una vida juntos, con Camilito y todo bonito, amor.",
+  "Espero que la pases súper en este, tu cumpleaños. 22 años ya, amor, ¡estás vieja! Te amo mucho, amor.",
 ];
 
 // Mostrar modal al hacer click en una imagen
@@ -72,12 +70,18 @@ const modal = document.getElementById("modal");
 const modalMessage = document.getElementById("modalMessage");
 const closeModal = document.getElementById("closeModal");
 
+// Prepara el sonido de gota
+const gotaAudio = new Audio("gota.mp3");
+gotaAudio.volume = 0.5; // volumen suave
+
 // Asignar evento a cada imagen después de crearlas
 Array.from(gallery.children).forEach((imgElem, idx) => {
   imgElem.addEventListener("click", () => {
     const mensaje = mensajes[idx % mensajes.length];
     modalMessage.textContent = mensaje;
     modal.classList.add("active");
+    gotaAudio.currentTime = 0;
+    gotaAudio.play();
   });
 });
 
@@ -90,4 +94,14 @@ modal.addEventListener("click", (e) => {
   if (e.target === modal) {
     modal.classList.remove("active");
   }
+});
+
+// Efecto de escarcha (sparkle) siguiendo el puntero
+window.addEventListener("mousemove", function (e) {
+  const sparkle = document.createElement("div");
+  sparkle.className = "sparkle";
+  sparkle.style.left = e.clientX - 6 + "px";
+  sparkle.style.top = e.clientY - 6 + "px";
+  document.body.appendChild(sparkle);
+  setTimeout(() => sparkle.remove(), 700);
 });
