@@ -16,7 +16,7 @@
       "use": "@vercel/static"
     },
     {
-      "src": "*.{jpg,png,gif,svg,webp}",
+      "src": "*.{jpg,jpeg,png,gif,svg,webp}",
       "use": "@vercel/static"
     }
   ]
