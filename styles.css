@@ -155,6 +155,28 @@ footer {
   }
 }
 
+.play-music-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 2000;
+  background: linear-gradient(90deg, #e1cfff 0%, #ffe4f7 100%);
+  color: #a64ca6;
+  border: 2px solid #e75480;
+  border-radius: 30px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  box-shadow: 0 4px 16px rgba(230, 84, 128, 0.15);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  outline: none;
+}
+.play-music-btn:hover {
+  background: #e75480;
+  color: #fff;
+  border-color: #a64ca6;
+}
 @media (max-width: 600px) {
   .gallery {
     grid-template-columns: 1fr 1fr;
@@ -174,5 +196,11 @@ footer {
   header p,
   footer {
     font-size: 1rem;
+  }
+  .play-music-btn {
+    bottom: 12px;
+    right: 12px;
+    font-size: 1rem;
+    padding: 0.7rem 1.1rem;
   }
 }

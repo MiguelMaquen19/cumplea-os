@@ -18,6 +18,10 @@
     {
       "src": "*.{jpg,jpeg,png,gif,svg,webp}",
       "use": "@vercel/static"
+    },
+    {
+      "src": "*.mp3",
+      "use": "@vercel/static"
     }
   ]
 }

@@ -25,12 +25,32 @@
     <footer>
       <p>Con todo mi amor, para ti 💗</p>
     </footer>
-    <audio
-      id="romanticMusic"
-      src="https://cdn.pixabay.com/audio/2023/02/10/audio_12c6b6b6e2.mp3"
-      autoplay
-      loop
-    ></audio>
+    <audio id="romanticMusic" src="musica.mp3" autoplay loop></audio>
+    <button id="playMusicBtn" class="play-music-btn" style="display: none">
+      🎵 Haz clic para escuchar la música
+    </button>
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        const audio = document.getElementById("romanticMusic");
+        const btn = document.getElementById("playMusicBtn");
+        if (audio) {
+          // Intentar reproducir automáticamente
+          audio
+            .play()
+            .then(() => {
+              btn.style.display = "none";
+            })
+            .catch(() => {
+              btn.style.display = "block";
+            });
+          // Al hacer clic en el botón, reproducir música
+          btn.addEventListener("click", function () {
+            audio.play();
+            btn.style.display = "none";
+          });
+        }
+      });
+    </script>
     <script src="script.js"></script>
   </body>
 </html>
